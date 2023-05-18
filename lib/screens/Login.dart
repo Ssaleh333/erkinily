@@ -12,6 +12,9 @@ import 'Profile.dart';
 import 'Sign_up.dart';
 
 class Login_Screen extends StatelessWidget {
+  var emailController=TextEditingController();
+  var passwordController=TextEditingController();
+
   var formkey = GlobalKey<FormState>();
 
   @override
@@ -45,6 +48,7 @@ class Login_Screen extends StatelessWidget {
                       height: 15,
                     ),
                     TextFormField(
+                      controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       onFieldSubmitted: (String value){print(value);},
                       onChanged: (String value){print(value);},
@@ -73,7 +77,9 @@ class Login_Screen extends StatelessWidget {
                       height: 15,
                     ),
                     TextFormField(
+                      controller:passwordController,
                       keyboardType: TextInputType.visiblePassword,
+                      obscureText: true,
                       onFieldSubmitted: (String value){print(value);},
                       onChanged: (String value){print(value);},
                       validator: (value){
@@ -84,6 +90,7 @@ class Login_Screen extends StatelessWidget {
                       },
                       decoration: InputDecoration(
                           prefixIcon: Icon(Icons.lock_outline),
+                          suffixIcon: Icon(Icons.remove_red_eye),
                           border: OutlineInputBorder(),
                           hintText: 'Enter Your Password'
                       ),
@@ -109,7 +116,10 @@ class Login_Screen extends StatelessWidget {
                       width: double.infinity,
                       child: MaterialButton(
                         onPressed: (){
-
+                          if(formkey.currentState!.validate()){
+                            print(emailController.text);
+                            print(passwordController.text);
+                          }
                           final route=MaterialPageRoute(builder: (context)=>CodeScreen());
                           Navigator.push(context, route);
                         },
