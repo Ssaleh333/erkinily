@@ -1,6 +1,6 @@
-import 'package:erkinily/Home.dart';
-import 'package:erkinily/Sign_up.dart';
-import 'package:erkinily/onboard_Model.dart';
+import 'package:erkinily/screens/Home.dart';
+import 'package:erkinily/screens/Sign_up.dart';
+import 'package:erkinily/screens/onboard_Model.dart';
 import 'package:flutter/material.dart';
 class Onboard extends StatefulWidget {
 
@@ -35,7 +35,7 @@ class _OnboardState extends State<Onboard> {
             final route=MaterialPageRoute(builder: (context)=>Sign_up());
             Navigator.push(context, route);
           },
-              child: Text("Skip",
+              child: Text("Skip",style: TextStyle(color: Colors.grey),
               )),
         ],
       ),
@@ -87,8 +87,8 @@ class _OnboardState extends State<Onboard> {
               Text(screens[index].desc,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                fontSize: 16,
-                color: Colors.black
+                fontSize: 23,
+                color: Colors.grey
               ),),
               InkWell(
                 onTap: (){
@@ -111,7 +111,9 @@ class _OnboardState extends State<Onboard> {
                   color: Colors.white,
                   fontSize: 20
                 ),),
-                )
+
+                ),
+
               )
             ],
           );

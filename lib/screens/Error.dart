@@ -1,4 +1,4 @@
-import 'package:erkinily/TryAgain.dart';
+import 'package:erkinily/screens/TryAgain.dart';
 import 'package:flutter/material.dart';
 
 class ErrorScrren extends StatelessWidget {

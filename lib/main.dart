@@ -1,19 +1,20 @@
-import 'package:erkinily/AcountSettings.dart';
-import 'package:erkinily/ChangePassword.dart';
-import 'package:erkinily/Code_Screen.dart';
-import 'package:erkinily/Error.dart';
-import 'package:erkinily/History_Screen.dart';
-import 'package:erkinily/Home.dart';
-import 'package:erkinily/Login.dart';
-import 'package:erkinily/Profile.dart';
-import 'package:erkinily/ProfileSetting.dart';
-import 'package:erkinily/Recharge.dart';
-import 'package:erkinily/ScannerScreen.dart';
-import 'package:erkinily/Sign_up.dart';
-import 'package:erkinily/qr_Code.dart';
+import 'package:erkinily/screens/AcountSettings.dart';
+import 'package:erkinily/screens/ChangePassword.dart';
+import 'package:erkinily/screens/Code_Screen.dart';
+import 'package:erkinily/screens/Error.dart';
+import 'package:erkinily/screens/Home.dart';
+import 'package:erkinily/screens/Login.dart';
+import 'package:erkinily/screens/Profile.dart';
+import 'package:erkinily/screens/ProfileSetting.dart';
+import 'package:erkinily/screens/Recharge.dart';
+import 'package:erkinily/screens/Reservation.dart';
+import 'package:erkinily/screens/ScannerScreen.dart';
+import 'package:erkinily/screens/Sign_up.dart';
+import 'package:erkinily/screens/qr_Code.dart';
+import 'package:erkinily/screens/return.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'onboard.dart';
+import 'screens/onboard.dart';
 
 void main() {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
@@ -21,13 +22,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
+// String MyColor = "#3E77F2";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:Login_Screen(),
+      home:Onboard(),
       debugShowCheckedModeBanner: false,
     );
-  }}
+  }
+}
 
 

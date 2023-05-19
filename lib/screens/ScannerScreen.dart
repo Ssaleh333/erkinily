@@ -1,51 +1,15 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:erkinily/screens/Home.dart';
+import 'package:erkinily/screens/qr_Code.dart';
+import 'package:erkinily/screens/return.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
+import 'Profile.dart';
 
-
-class ScannerScreen extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: const Text('Let Scan',style: TextStyle(color: Colors.black,fontSize: 22),)),
-      body: Center(
-        child: Container(
-          height: 55,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.indigoAccent
-          ),
-          width: 200,
-          child: MaterialButton(
-            onPressed: (){
-              final route=MaterialPageRoute(builder: (context)=>QRViewExample());
-              Navigator.push(context, route);
-            },
-            child: Text(
-              'Let Scan',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 25
-              ),
-            ),
-          ),
-        ),
-
-
-      ),
-    );
-  }
-}
 
 class QRViewExample extends StatefulWidget {
   const QRViewExample({Key? key}) : super(key: key);
@@ -55,6 +19,8 @@ class QRViewExample extends StatefulWidget {
 }
 
 class _QRViewExampleState extends State<QRViewExample> {
+  bool sucsses=true;
+  bool pick =true;
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -72,7 +38,161 @@ class _QRViewExampleState extends State<QRViewExample> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return result != null?
+    Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          color: Colors.white,
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+          icon: Icon(
+            Icons.arrow_back_outlined,
+            color: Colors.black,
+            size: 25,
+          ),
+        ),
+
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: sucsses?Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/images/true.jpg',height: 100,width: 100,),
+              ],
+            ),
+            SizedBox(height: 20,),
+            Text(pick? 'you can pick your car now':'your car pick safe now',
+              style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18
+              ),
+            ),
+            SizedBox(height: 150,),
+            Container(
+              height: 55,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.indigoAccent
+              ),
+              width: double.infinity,
+              child: MaterialButton(
+                onPressed: (){
+                  final route=MaterialPageRoute(builder: (context)=>Home_Screen());
+                  Navigator.push(context, route);
+                },
+                child: Text(
+                  'Back to Home',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 25
+                  ),
+                ),
+              ),
+            )
+          ],
+        ):
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/images/false.jpg',height: 100,width: 100,),
+              ],
+            ),
+            SizedBox(height: 20,),
+            Text('Faild to Scan',
+              style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18
+              ),
+            ),
+            SizedBox(height: 150,),
+            Container(
+              height: 55,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.indigoAccent
+              ),
+              width: double.infinity,
+              child: MaterialButton(
+                onPressed: (){
+                  final route=MaterialPageRoute(builder: (context)=>QRViewExample());
+                  Navigator.push(context, route);
+                },
+                child: Text(
+                  'Scan Again',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 25
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 6,
+
+        onPressed:() {
+          final route=MaterialPageRoute(builder: (context)=>qr_Screen());
+          Navigator.push(context, route);
+        },
+        backgroundColor: Colors.indigoAccent,
+        child: Icon(Icons.qr_code,
+          size: 35,),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        notchMargin: 8,
+        shape: CircularNotchedRectangle(),
+        child: Padding(
+          padding: const EdgeInsets.all(3),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                onPressed: (){
+                  final route=MaterialPageRoute(builder: (context)=>Return());
+                  Navigator.push(context, route);
+                },
+                icon: Icon(Icons.history_rounded,
+                  color: Colors.grey,
+                  size: 33,),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              IconButton(
+                onPressed: (){
+                  final route=MaterialPageRoute(builder: (context)=>Profile_Screen());
+                  Navigator.push(context, route);
+                },
+                icon: Icon(Icons.person_outline,
+                  color: Colors.grey,
+                  size: 33,),
+              )
+            ],
+          ),
+        ),
+      ),
+    ):
+    Scaffold(
       body: Column(
         children: <Widget>[
           Expanded(flex: 4, child: _buildQrView(context)),
@@ -95,9 +215,9 @@ class _QRViewExampleState extends State<QRViewExample> {
                       Container(
                         margin: const EdgeInsets.all(8),
                         child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.indigoAccent
-                          ),
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.indigoAccent
+                            ),
                             onPressed: () async {
                               await controller?.toggleFlash();
                               setState(() {});
@@ -221,3 +341,4 @@ class _QRViewExampleState extends State<QRViewExample> {
     super.dispose();
   }
 }
+

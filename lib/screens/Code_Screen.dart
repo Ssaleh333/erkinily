@@ -1,9 +1,10 @@
 import 'dart:ui';
-import 'package:erkinily/Home.dart';
+import 'package:erkinily/screens/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:otp_autofill/otp_autofill.dart';
 
-class CodeScreen extends StatelessWidget {
+  class CodeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

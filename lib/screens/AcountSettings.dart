@@ -36,7 +36,7 @@ class AcountSettings extends StatelessWidget {
               Text(
                 'Name',
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                   fontWeight: FontWeight.w500
                 ),
               ),
@@ -46,6 +46,7 @@ class AcountSettings extends StatelessWidget {
               TextFormField(
                 keyboardType: TextInputType.name,
                 decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 9),
                     prefixIcon: Icon(Icons.person_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12)
@@ -59,7 +60,7 @@ class AcountSettings extends StatelessWidget {
               Text(
                 'Phone Number',
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                   fontWeight: FontWeight.w500
                 ),
               ),
@@ -69,7 +70,7 @@ class AcountSettings extends StatelessWidget {
               TextFormField(
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
-
+                    contentPadding: EdgeInsets.symmetric(horizontal: 9),
                     prefixIcon: Icon(Icons.phone_outlined),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12)
@@ -83,7 +84,7 @@ class AcountSettings extends StatelessWidget {
               Text(
                 'Email',
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                   fontWeight: FontWeight.w500
                 ),
               ),
@@ -93,6 +94,7 @@ class AcountSettings extends StatelessWidget {
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 9),
                     prefixIcon: Icon(Icons.email_outlined),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12)

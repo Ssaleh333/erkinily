@@ -3,11 +3,14 @@
 
 import 'dart:ui';
 
-import 'package:erkinily/AboutApp.dart';
-import 'package:erkinily/ContactUs.dart';
-import 'package:erkinily/ProfileSetting.dart';
-import 'package:erkinily/Recharge.dart';
-import 'package:erkinily/Terms.dart';
+import 'package:erkinily/screens/AboutApp.dart';
+import 'package:erkinily/screens/ContactUs.dart';
+import 'package:erkinily/screens/Login.dart';
+import 'package:erkinily/screens/ProfileSetting.dart';
+import 'package:erkinily/screens/Recharge.dart';
+import 'package:erkinily/screens/Terms.dart';
+import 'package:erkinily/screens/qr_Code.dart';
+import 'package:erkinily/screens/return.dart';
 import 'package:flutter/material.dart';
 
 
@@ -47,14 +50,19 @@ class Profile_Screen extends StatelessWidget {
           children: [
               Row(
                 children: [
-                  Image(
-                    height: 120,
-                    width: 100,
-                    image: NetworkImage(
-                      'https://png.pngtree.com/illustration/20220317/ourmid/pngtree-illustration-of-the-head-of-the-boy-in-the-sweater-image_61962.jpg',
-
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)
                     ),
+                    child: Image(
+                      height: 139,
+                      width: 139,
+                      image: NetworkImage(
+                        'https://png.pngtree.com/illustration/20220317/ourmid/pngtree-illustration-of-the-head-of-the-boy-in-the-sweater-image_61962.jpg',
+
+                      ),
              fit: BoxFit.fill,
+                    ),
                   ),
                   SizedBox(
                     width: 8,
@@ -67,7 +75,7 @@ class Profile_Screen extends StatelessWidget {
                      },
                      child: Card(
                        child: Container(
-                         height:120 ,
+                         height:139 ,
                          child: Column(
                            mainAxisAlignment: MainAxisAlignment.center,
                            children: [
@@ -117,20 +125,24 @@ class Profile_Screen extends StatelessWidget {
                 Navigator.push(context, route);
               },
               child: Card(
-                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7)
+                ),
+                elevation: 2,
                 child: Container(
-                  padding: EdgeInsets.all(8),
+                  padding: EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Information',
                         style: TextStyle(
-                          color:Colors.grey,
+                          color:Colors.grey[400],
                           fontSize: 15,
                           fontWeight: FontWeight.w500
                         ),
                       ),
+                      SizedBox(height: 6,),
                       Row(
                         children: [
                           Expanded(
@@ -143,16 +155,8 @@ class Profile_Screen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          IconButton(
-                            color: Colors.black,
-                            onPressed: (){
-                            },
-                            icon: Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              color: Colors.grey,
-                              size: 15,
-                            ),
-                          ),
+                          Icon(
+                            Icons.arrow_forward_ios_outlined,size: 15,color: Colors.grey,)
                         ],
                       )
                     ],
@@ -160,17 +164,21 @@ class Profile_Screen extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(height: 9,),
             Card(
-              elevation: 5,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7)
+              ),
+              elevation: 2,
               child: Padding(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(6),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'General',
                       style: TextStyle(
-                          color:Colors.grey,
+                          color:Colors.grey[400],
                           fontSize: 18,
                           fontWeight: FontWeight.w500
                       ),
@@ -195,13 +203,13 @@ class Profile_Screen extends StatelessWidget {
                             ),
                           ),
                          Icon(
-                           Icons.arrow_forward_ios_outlined,size: 22,color: Colors.grey,)
+                           Icons.arrow_forward_ios_outlined,size: 15,color: Colors.grey,)
                         ],
                       ),
                     ),
-                    SizedBox(height: 9,),
+                    SizedBox(height: 14,),
                     Divider(
-                      color: Colors.grey,
+                      color: Colors.grey[300],
                       height: 5,
                       thickness: 1,
                     ),
@@ -217,20 +225,20 @@ class Profile_Screen extends StatelessWidget {
                             child: Text(
                               'Contact us',
                               style: TextStyle(
-                                  color:Colors.black,
+                                  color:Colors.black87,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500
                               ),
                             ),
                           ),
                           Icon(
-                            Icons.arrow_forward_ios_outlined,size: 22,color: Colors.grey,)
+                            Icons.arrow_forward_ios_outlined,size: 15,color: Colors.grey,)
                         ],
                       ),
                     ),
-                    SizedBox(height: 9,),
+                    SizedBox(height: 14,),
                     Divider(
-                      color: Colors.grey,
+                      color: Colors.grey[300],
                       height: 5,
                       thickness: 1,
                     ),
@@ -253,17 +261,21 @@ class Profile_Screen extends StatelessWidget {
                             ),
                           ),
                           Icon(
-                            Icons.arrow_forward_ios_outlined,size: 22,color: Colors.grey,)
+                            Icons.arrow_forward_ios_outlined,size: 15,color: Colors.grey,)
                         ],
                       ),
                     ),
-                    SizedBox(height: 9,),
+                    SizedBox(height: 14,),
                   ],
                 ),
               ),
             ),
+            SizedBox(height: 9,),
             Card(
-              elevation: 5,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7)
+              ),
+              elevation: 2,
               child: Container(
                 padding: EdgeInsets.all(8),
                 child: Column(
@@ -285,7 +297,8 @@ class Profile_Screen extends StatelessWidget {
                           color: Colors.black,
                           onPressed: (
                               ){
-
+                            final route=MaterialPageRoute(builder: (context)=>Login_Screen());
+                            Navigator.push(context, route);
                           },
                           icon: Icon(
                             Icons.logout_outlined,
@@ -301,6 +314,51 @@ class Profile_Screen extends StatelessWidget {
             ),
     ]
     ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 6,
+
+        onPressed:() {
+          final route=MaterialPageRoute(builder: (context)=>qr_Screen());
+          Navigator.push(context, route);
+        },
+        backgroundColor: Colors.indigoAccent,
+        child: Icon(Icons.qr_code,
+          size: 35,),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        notchMargin: 8,
+        shape: CircularNotchedRectangle(),
+        child: Padding(
+          padding: const EdgeInsets.all(3),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                onPressed: (){
+                  final route=MaterialPageRoute(builder: (context)=>Return());
+                  Navigator.push(context, route);
+                },
+                icon: Icon(Icons.history_rounded,
+                  color: Colors.grey,
+                  size: 33,),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              IconButton(
+                onPressed: (){
+                  final route=MaterialPageRoute(builder: (context)=>Profile_Screen());
+                  Navigator.push(context, route);
+                },
+                icon: Icon(Icons.person_outline,
+                  color: Colors.grey,
+                  size: 33,),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -1,26 +1,52 @@
 
-
 import 'dart:ui';
 
-import 'package:erkinily/Reservation.dart';
-import 'package:erkinily/qr_Code.dart';
+import 'package:erkinily/screens/Reservation.dart';
+import 'package:erkinily/screens/qr_Code.dart';
+import 'package:erkinily/screens/return.dart';
 import 'package:flutter/material.dart';
-
-import 'History_Screen.dart';
+import 'package:flutter/rendering.dart';
 import 'Profile.dart';
 
+class OffersModel{
+  final Image image;
+  final String city;
+  final String location;
+  final String num;
+  final String price;
+
+  OffersModel({
+    required this.image,
+    required this.city,
+    required this.location,
+    required this.num,
+    required this.price
+  });
+}
 class Home_Screen extends StatelessWidget {
-int index =0;
+
+ // int index =0;
+  List<OffersModel> offers =[
+
+    OffersModel(image: Image.asset('assets/images/img.jpg',), city: 'Elmansoura', location: '21stGehan', num: '7 avaliable', price: '5 EGP/hour'),
+    OffersModel(image: Image.asset('assets/images/img.jpg',), city: 'Elmansoura', location: 'AlTeraa', num: '2 avaliable', price: '2 EGP/hour'),
+    OffersModel(image: Image.asset('assets/images/img.jpg',), city: 'Elmansoura', location: '21Gehan', num: '7 avaliable', price: '5 EGP/hour')
+  ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-appBar: AppBar
-  (
 
-  backgroundColor: Colors.white,
-  elevation: 0,
+    return Scaffold(
+      backgroundColor: Colors.white,
+appBar: AppBar(
+
+        backgroundColor: Colors.white,
+        elevation: 0,
+  actions: [
+    Card
+      (color: Colors.grey[100],
+        child: IconButton(onPressed: (){}, icon: Icon(Icons.notifications),color:Colors.indigoAccent))
+  ],
 ),
-backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -32,14 +58,17 @@ backgroundColor: Colors.white,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10))
                   ),
-                  child: Image(
-                    height: 60,
-                    width: 60,
-                    image: NetworkImage(
-                      'https://png.pngtree.com/illustration/20220317/ourmid/pngtree-illustration-of-the-head-of-the-boy-in-the-sweater-image_61962.jpg',
+                  child: Card(
 
+                    child: Image(
+                      height: 60,
+                      width: 60,
+                      image: NetworkImage(
+                        'https://png.pngtree.com/illustration/20220317/ourmid/pngtree-illustration-of-the-head-of-the-boy-in-the-sweater-image_61962.jpg',
+
+                      ),
+                      fit: BoxFit.cover,
                     ),
-                    fit: BoxFit.cover,
                   ),
                 ),
                 SizedBox(
@@ -94,11 +123,19 @@ backgroundColor: Colors.white,
                 )
               ],
             ),
-
             SizedBox(
-              height: 40,
+              height: 20,
             ),
-            SingleChildScrollView(
+       /*     SizedBox(
+              height: 300,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                  itemBuilder: (context,index)=>buildOffersItem(offers[index]),
+
+                  itemCount: offers.length),
+            ) ,  */
+
+         SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,10 +147,7 @@ backgroundColor: Colors.white,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image(
-                              height: 150,
-                              width: 200,
-                              image:NetworkImage('https://th.bing.com/th/id/OIP.ATdCpTYrmawWJGCJj52fsAHaFj?pid=ImgDet&rs=1')),
+                          Image.asset('assets/images/img.jpg',width:220,height: 220,fit: BoxFit.fill,),
                           Text(
                             'Elmansoura',
                             style: TextStyle(
@@ -152,7 +186,6 @@ backgroundColor: Colors.white,
                             height: 8,
                           ),
                           Row(
-                            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Container(
                                 child: ElevatedButton(
@@ -178,10 +211,10 @@ backgroundColor: Colors.white,
                                 ),
                               ),
                               SizedBox(
-                                width: 10,
+                                width: 18,
                               ),
                               Text(
-                                '5 L.E / hour',
+                                '5 EGP / hour',
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w500,
@@ -196,16 +229,13 @@ backgroundColor: Colors.white,
                     ),
                   ),
                   Card(
-                    elevation: 7,
+                    elevation: 5,
                     child: Container(
                       padding: EdgeInsets.all(8),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image(
-                              height: 150,
-                              width: 200,
-                              image:NetworkImage('https://th.bing.com/th/id/OIP.ATdCpTYrmawWJGCJj52fsAHaFj?pid=ImgDet&rs=1')),
+                          Image.asset('assets/images/img.jpg',width:220,height: 220,fit: BoxFit.fill,),
                           Text(
                             'Elmansoura',
                             style: TextStyle(
@@ -244,11 +274,13 @@ backgroundColor: Colors.white,
                             height: 8,
                           ),
                           Row(
-                            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Container(
                                 child: ElevatedButton(
-                                  onPressed: (){},
+                                  onPressed: (){
+                                    final route=MaterialPageRoute(builder: (context)=>Reservation());
+                                    Navigator.push(context, route);
+                                  },
                                   style: ElevatedButton.styleFrom(
                                       primary: Colors.indigoAccent,
                                       // shape: MaterialStateProperty.all()
@@ -267,10 +299,98 @@ backgroundColor: Colors.white,
                                 ),
                               ),
                               SizedBox(
-                                width: 10,
+                                width: 18,
                               ),
                               Text(
-                                '5 L.E / hour',
+                                '5 EGP / hour',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.indigoAccent
+                                ),
+                              )
+                            ],
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
+                  Card(
+                    elevation: 5,
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset('assets/images/img.jpg',width:220,height: 220,fit: BoxFit.fill,),
+                          Text(
+                            'Elmansoura',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20,
+
+                            ),
+                          ),
+                          SizedBox(
+                            height: 7,
+                          ),
+                          Text(
+                              '21st Gehan'
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.directions_car_sharp,
+                                size: 20,
+                                color: Colors.green,),
+                              SizedBox(
+                                width: 9,
+                              ),
+                              Text(
+                                '7 available',
+                                style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.w500
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                child: ElevatedButton(
+                                  onPressed: (){
+                                    final route=MaterialPageRoute(builder: (context)=>Reservation());
+                                    Navigator.push(context, route);
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.indigoAccent,
+                                      // shape: MaterialStateProperty.all()
+                                      shape:     RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(9)
+                                      )
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.location_on_outlined),
+                                      Text(
+                                          'Book Now'
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 18,
+                              ),
+                              Text(
+                                '5 EGP / hour',
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w500,
@@ -287,6 +407,7 @@ backgroundColor: Colors.white,
                 ],
               ),
             )
+
           ],
         ),
       ),
@@ -312,7 +433,7 @@ backgroundColor: Colors.white,
           children: [
             IconButton(
               onPressed: (){
-                final route=MaterialPageRoute(builder: (context)=>History_Screen());
+                final route=MaterialPageRoute(builder: (context)=>Return());
                 Navigator.push(context, route);
               },
               icon: Icon(Icons.history_rounded,
@@ -339,4 +460,94 @@ backgroundColor: Colors.white,
 
     );
   }
+ /* Widget buildOffersItem(OffersModel offer)=>  Card(
+
+  elevation: 2,
+  child: Container(
+    padding: EdgeInsets.all(8),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+       Image.asset('${offer.image}'),
+        Text(
+          '${offer.city}',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 20,
+
+          ),
+        ),
+        SizedBox(
+          height: 7,
+        ),
+        Text(
+            '${offer.location}'
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          children: [
+            Icon(Icons.directions_car_sharp,
+              size: 20,
+              color: Colors.green,),
+            SizedBox(
+              width: 9,
+            ),
+            Text(
+              '${offer.num}',
+              style: TextStyle(
+                  color: Colors.green,
+                  fontWeight: FontWeight.w500
+              ),
+            )
+          ],
+        ),
+        SizedBox(
+          height: 8,
+        ),
+        Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Container(
+              child: ElevatedButton(
+                onPressed: (){
+                  final route=MaterialPageRoute(builder: (context)=>Reservation());
+                  Navigator.push(context, route);
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.indigoAccent,
+                    // shape: MaterialStateProperty.all()
+                    shape:     RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(9)
+                    )
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.location_on_outlined),
+                    Text(
+                        'Book Now'
+                    )
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              '${offer.price}',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.indigoAccent
+              ),
+            )
+          ],
+        ),
+
+      ],
+    ),
+  ),
+);  */
 }

@@ -1,5 +1,9 @@
-import 'package:erkinily/Home.dart';
+import 'package:erkinily/screens/Home.dart';
+import 'package:erkinily/screens/qr_Code.dart';
+import 'package:erkinily/screens/return.dart';
 import 'package:flutter/material.dart';
+
+import 'Profile.dart';
 
 class Reservation extends StatelessWidget {
 
@@ -7,8 +11,14 @@ class Reservation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         backgroundColor: Colors.white,
         elevation: 0,
+        actions: [
+          Card
+            (color: Colors.grey[100],
+              child: IconButton(onPressed: (){}, icon: Icon(Icons.notifications),color:Colors.indigoAccent))
+        ],
       ),
       backgroundColor: Colors.white,
           body: Padding(
@@ -145,7 +155,7 @@ class Reservation extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(Icons.timer_outlined,color: Colors.indigoAccent,size: 24,),
+                        Icon(Icons.my_location_rounded,color: Colors.indigoAccent,size: 24,),
                         SizedBox(
                           height: 5,
                         ),
@@ -178,7 +188,7 @@ class Reservation extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(Icons.timer_outlined,color: Colors.indigoAccent,size: 24,),
+                        Icon(Icons.location_on_outlined,color: Colors.indigoAccent,size: 24,),
                         SizedBox(
                           height: 5,
                         ),
@@ -232,6 +242,52 @@ class Reservation extends StatelessWidget {
               ],
             ),
           ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 6,
+
+        onPressed:() {
+          final route=MaterialPageRoute(builder: (context)=>qr_Screen());
+          Navigator.push(context, route);
+        },
+        backgroundColor: Colors.indigoAccent,
+        child: Icon(Icons.qr_code,
+          size: 35,),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        notchMargin: 8,
+        shape: CircularNotchedRectangle(),
+        child: Padding(
+          padding: const EdgeInsets.all(3),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                onPressed: (){
+                  final route=MaterialPageRoute(builder: (context)=>Return());
+                  Navigator.push(context, route);
+                },
+                icon: Icon(Icons.history_rounded,
+                  color: Colors.grey,
+                  size: 33,),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              IconButton(
+                onPressed: (){
+                  final route=MaterialPageRoute(builder: (context)=>Profile_Screen());
+                  Navigator.push(context, route);
+                },
+                icon: Icon(Icons.person_outline,
+                  color: Colors.grey,
+                  size: 33,),
+              )
+            ],
+          ),
+        ),
+      ),
+
     );
   }
 }

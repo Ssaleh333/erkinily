@@ -1,21 +1,23 @@
-import 'package:erkinily/Error.dart';
-import 'package:erkinily/TryAgain.dart';
+import 'package:erkinily/screens/Error.dart';
+import 'package:erkinily/screens/TryAgain.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 class RechargeScreen extends StatefulWidget {
-
   @override
   State<RechargeScreen> createState() => _RechargeScreenState();
 }
 void showSnackBar(BuildContext context){
+
+  bool sucess =true;
   final snackBar =SnackBar(
     backgroundColor: Colors.white,
     behavior: SnackBarBehavior.floating,
     action: SnackBarAction(label: 'Dismiss',
       textColor: Colors.indigoAccent,
       onPressed: (){},),
-    content :const Text('kjhgfgtuyiuo',style: TextStyle(color: Colors.indigoAccent),),
+    content : Text(sucess?'Operation Done Sussessfully':'Operation Failed'
+    ,style: TextStyle(color: sucess?Colors.indigoAccent:Colors.red),),
   );
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }

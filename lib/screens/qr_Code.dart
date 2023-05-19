@@ -1,7 +1,10 @@
-import 'package:erkinily/ScannerScreen.dart';
+import 'package:erkinily/screens/ScannerScreen.dart';
+import 'package:erkinily/screens/return.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+
+import 'Profile.dart';
 
 class qr_Screen extends StatefulWidget {
 
@@ -48,10 +51,10 @@ class _qr_ScreenState extends State<qr_Screen> {
             ),
             SizedBox(height: 8,),
             Text('position the QR code within the frame',style: TextStyle(fontWeight: FontWeight.w500,color: Colors.grey,fontSize: 15),),
-            SizedBox(height: 100,),
-            QrImage(data: date,backgroundColor: Colors.white,size: 300,),
+            SizedBox(height: 70,),
+            QrImage(data: date,backgroundColor: Colors.white,size: 260,),
             SizedBox(
-              height: 55,
+              height: 50,
             ),
             Container(
               height: 55,
@@ -62,7 +65,7 @@ class _qr_ScreenState extends State<qr_Screen> {
               width: double.infinity,
               child: MaterialButton(
                 onPressed: (){
-                  final route=MaterialPageRoute(builder: (context)=>ScannerScreen());
+                  final route=MaterialPageRoute(builder: (context)=>QRViewExample());
                   Navigator.push(context, route);
                 },
                 child: Text(
@@ -76,6 +79,51 @@ class _qr_ScreenState extends State<qr_Screen> {
               ),
             ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 6,
+
+        onPressed:() {
+          final route=MaterialPageRoute(builder: (context)=>qr_Screen());
+          Navigator.push(context, route);
+        },
+        backgroundColor: Colors.indigoAccent,
+        child: Icon(Icons.qr_code,
+          size: 35,),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        notchMargin: 8,
+        shape: CircularNotchedRectangle(),
+        child: Padding(
+          padding: const EdgeInsets.all(3),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                onPressed: (){
+                  final route=MaterialPageRoute(builder: (context)=>Return());
+                  Navigator.push(context, route);
+                },
+                icon: Icon(Icons.history_rounded,
+                  color: Colors.grey,
+                  size: 33,),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              IconButton(
+                onPressed: (){
+                  final route=MaterialPageRoute(builder: (context)=>Profile_Screen());
+                  Navigator.push(context, route);
+                },
+                icon: Icon(Icons.person_outline,
+                  color: Colors.grey,
+                  size: 33,),
+              )
+            ],
+          ),
         ),
       ),
     );

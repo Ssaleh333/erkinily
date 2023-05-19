@@ -3,7 +3,7 @@
 import 'dart:ui';
 
 
-import 'package:erkinily/Code_Screen.dart';
+import 'package:erkinily/screens/Code_Screen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -11,9 +11,17 @@ import 'Home.dart';
 import 'Profile.dart';
 import 'Sign_up.dart';
 
-class Login_Screen extends StatelessWidget {
+class Login_Screen extends StatefulWidget {
+  @override
+  State<Login_Screen> createState() => _Login_ScreenState();
+}
+
+class _Login_ScreenState extends State<Login_Screen> {
   var emailController=TextEditingController();
+
   var passwordController=TextEditingController();
+
+   bool oobscureText= true;
 
   var formkey = GlobalKey<FormState>();
 
@@ -41,11 +49,11 @@ class Login_Screen extends StatelessWidget {
                     Text(
                       'Email',
                       style: TextStyle(
-                          fontSize: 20
+                          fontSize: 16
                       ),
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 10,
                     ),
                     TextFormField(
                       controller: emailController,
@@ -59,8 +67,11 @@ class Login_Screen extends StatelessWidget {
                         return null;
                       },
                       decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(horizontal: 9),
                           prefixIcon: Icon(Icons.person_outline),
-                          border: OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12)
+                          ),
                           hintText: 'Enter Your Email'
                       ),
                     ),
@@ -70,16 +81,16 @@ class Login_Screen extends StatelessWidget {
                     Text(
                       'Password',
                       style: TextStyle(
-                          fontSize: 20
+                          fontSize: 16
                       ),
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 10,
                     ),
                     TextFormField(
                       controller:passwordController,
                       keyboardType: TextInputType.visiblePassword,
-                      obscureText: true,
+                      obscureText: oobscureText,
                       onFieldSubmitted: (String value){print(value);},
                       onChanged: (String value){print(value);},
                       validator: (value){
@@ -89,19 +100,30 @@ class Login_Screen extends StatelessWidget {
                         return null;
                       },
                       decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(horizontal: 9),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12)
+                          ),
                           prefixIcon: Icon(Icons.lock_outline),
-                          suffixIcon: Icon(Icons.remove_red_eye),
-                          border: OutlineInputBorder(),
+                          suffixIcon: GestureDetector(onTap: (){
+                            setState((){
+                              oobscureText=!oobscureText;
+                            });
+                          },
+                          child:Icon(oobscureText ?Icons.visibility:Icons.visibility_off),),
+                       //   border: OutlineInputBorder(),
                           hintText: 'Enter Your Password'
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
-                    Text(
-                      'Forget your Password?',
-                      style: TextStyle(
-                          color: Colors.indigoAccent
+                    GestureDetector(
+                      child: Text(
+                        'Forget your Password?',
+                        style: TextStyle(
+                            color: Colors.indigoAccent
+                        ),
                       ),
                     ),
                     SizedBox(

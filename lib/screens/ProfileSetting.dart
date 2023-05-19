@@ -1,5 +1,5 @@
-import 'package:erkinily/AcountSettings.dart';
-import 'package:erkinily/ChangePassword.dart';
+import 'package:erkinily/screens/AcountSettings.dart';
+import 'package:erkinily/screens/ChangePassword.dart';
 import 'package:flutter/material.dart';
 
 class ProfileSetting extends StatelessWidget {

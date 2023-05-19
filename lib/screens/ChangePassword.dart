@@ -37,7 +37,7 @@ class ChangePassword extends StatelessWidget {
               Text(
                 'Old Password',
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500
                 ),
               ),
@@ -47,6 +47,7 @@ class ChangePassword extends StatelessWidget {
               TextFormField(
                 keyboardType: TextInputType.visiblePassword,
                 decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 9),
                     prefixIcon: Icon(Icons.lock_outline),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12)
@@ -60,7 +61,7 @@ class ChangePassword extends StatelessWidget {
               Text(
                 'New Password',
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500
                 ),
               ),
@@ -70,7 +71,7 @@ class ChangePassword extends StatelessWidget {
               TextFormField(
                 keyboardType: TextInputType.visiblePassword,
                 decoration: InputDecoration(
-
+                    contentPadding: EdgeInsets.symmetric(horizontal: 9),
                     prefixIcon: Icon(Icons.lock_outline),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12)
@@ -84,7 +85,7 @@ class ChangePassword extends StatelessWidget {
               Text(
                 'Repeat Password',
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500
                 ),
               ),
@@ -94,6 +95,7 @@ class ChangePassword extends StatelessWidget {
               TextFormField(
                 keyboardType: TextInputType.visiblePassword,
                 decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 9),
                     prefixIcon: Icon(Icons.lock_outline),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12)
